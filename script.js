@@ -33,6 +33,89 @@ const sumOjek = document.getElementById('sum-ojek');
 const sumTotal = document.getElementById('sum-total');
 const btnWA = document.getElementById('btn-wa');
 
+// TAMBAHAN: Set minimal tanggal hari ini (biar ga bisa milih tanggal kemarin)
+const inputTanggal = document.getElementById('tanggal');
+const today = new Date().toISOString().split('T')[0];
+inputTanggal.setAttribute('min', today);
+
+// ... (fungsi renderGunung & pilihGunung biarin sama) ...
+
+// 4. FUNGSI PILIH PAKET
+document.querySelectorAll('input[name="paket"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+        pesanan.paket = e.target.value;
+        pesanan.hargaDasar = parseInt(e.target.dataset.harga);
+        
+        sumPaket.innerText = pesanan.paket;
+        
+        // Tampilkan Step 3
+        step3.classList.remove('hidden');
+        
+        hitungTotal();
+    });
+});
+
+// TAMBAHAN: FUNGSI INPUT TANGGAL
+inputTanggal.addEventListener('change', (e) => {
+    pesanan.tanggal = e.target.value;
+    
+    // Format tanggal jadi cantik (Contoh: 12 Desember 2026)
+    const opsiFormat = { year: 'numeric', month: 'long', day: 'numeric' };
+    const tanggalCantik = new Date(e.target.value).toLocaleDateString('id-ID', opsiFormat);
+    
+    sumTanggal.innerText = tanggalCantik;
+    hitungTotal();
+});
+
+// 5. FUNGSI MEPO & OJEK (Sama kayak sebelumnya)
+// ... (biarin sama) ...
+
+// 6. HITUNG TOTAL & VALIDASI
+function hitungTotal() {
+    let total = pesanan.hargaDasar;
+    
+    if (pesanan.ojek) {
+        total += 200000;
+    }
+    
+    pesanan.total = total;
+    sumTotal.innerText = formatRupiah(total);
+
+    // Validasi: Tombol WA aktif jika Gunung, Paket, TANGGAL, dan Mepo sudah dipilih
+    if (pesanan.gunung && pesanan.paket && pesanan.tanggal && pesanan.mepo) {
+        btnWA.disabled = false;
+    } else {
+        btnWA.disabled = true;
+    }
+}
+
+// ... (fungsi formatRupiah biarin sama) ...
+
+// 8. REDIRECT KE WHATSAPP
+btnWA.addEventListener('click', () => {
+    const noWA = "628551970165"; 
+    
+    // Format tanggal buat di WA
+    const opsiFormat = { year: 'numeric', month: 'long', day: 'numeric' };
+    const tanggalWA = new Date(pesanan.tanggal).toLocaleDateString('id-ID', opsiFormat);
+
+    // Teks yang akan otomatis terisi di WA (TAMBAHIN TANGGAL)
+    const pesan = `Halo Admin Trip By Puteescape, saya mau booking pendakian:%0A%0A` +
+                  `🏔️ Destinasi: *${pesanan.gunung}*%0A` +
+                  `🎒 Paket: *${pesanan.paket}*%0A` +
+                  `📅 Tanggal: *${tanggalWA}*%0A` + 
+                  `📍 Meeting Point: *${pesanan.mepo}*%0A` +
+                  `🏍️ Tambahan Ojek: *${pesanan.ojek ? 'Ya' : 'Tidak'}*%0A%0A` +
+                  `💰 Total Estimasi: *${formatRupiah(pesanan.total)}*%0A%0A` +
+                  `Mohon info selanjutnya ya min. Terima kasih!`;
+
+    const urlWA = `https://wa.me/${noWA}?text=${pesan}`;
+    window.open(urlWA, '_blank');
+});
+
+// Jalankan fungsi render saat pertama kali dibuka
+renderGunung();
+
 // 2. RENDER LIST GUNUNG
 function renderGunung() {
     dataGunung.forEach(gunung => {

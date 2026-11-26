@@ -69,15 +69,23 @@
             </div>
         </section>
 
-        <!-- Step 3: Detail & Add-ons (Sembunyi dulu) -->
+                <!-- Step 3: Detail & Add-ons (Sembunyi dulu) -->
         <section class="card hidden" id="step-3">
             <h2><span class="step-number">3</span> Detail Pesanan</h2>
             
+            <!-- TAMBAHAN: INPUT TANGGAL -->
+            <div class="form-group">
+                <label for="tanggal">Pilih Tanggal Pendakian:</label>
+                <input type="date" id="tanggal" required>
+            </div>
+
             <div class="form-group">
                 <label for="mepo">Pilih Meeting Point (Mepo):</label>
                 <select id="mepo" required>
                     <option value="" disabled selected>-- Pilih Mepo --</option>
                     <option value="Stasiun Bogor">Stasiun Bogor</option>
+                    <option value="Stasiun Jakarta">Stasiun Jakarta</option>
+                    <option value="Terminal Baranangsiang">Terminal Baranangsiang</option>
                     <option value="Basecamp Puteescape">Basecamp Puteescape</option>
                 </select>
             </div>
@@ -96,6 +104,10 @@
             <div class="summary-details">
                 <p><span>Destinasi:</span> <strong id="sum-gunung">-</strong></p>
                 <p><span>Paket:</span> <strong id="sum-paket">-</strong></p>
+                
+                <!-- TAMBAHAN: RINGKASAN TANGGAL -->
+                <p><span>Tanggal:</span> <strong id="sum-tanggal">-</strong></p>
+                
                 <p><span>Mepo:</span> <strong id="sum-mepo">-</strong></p>
                 <p><span>Ojek:</span> <strong id="sum-ojek">Tidak</strong></p>
             </div>

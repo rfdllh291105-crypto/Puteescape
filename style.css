@@ -407,3 +407,27 @@ footer {
         border-radius: 15px;
     }
 }
+
+/* STYLING UNTUK INPUT TANGGAL */
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Mengubah warna icon kalender bawaan browser jadi putih */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+/* Biar teks placeholder tanggal agak transparan dikit */
+input[type="date"]:invalid {
+    color: var(--text-muted);
+}
