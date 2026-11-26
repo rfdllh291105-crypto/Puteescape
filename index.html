@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip By Puteescape - Private Trip</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Hero Section -->
+    <header class="hero">
+        <div class="logo-container">
+            <!-- Ganti src ini dengan link gambar maskot lu -->
+            <div class="mascot-placeholder"><i class="fa-solid fa-person-hiking"></i></div>
+            <h2>Trip By <span class="text-pink">Puteescape</span></h2>
+        </div>
+        <div class="hero-text">
+            <h1>Private Trip</h1>
+            <p class="caveat-text">enjoying nature</p>
+            <h3 class="cta-text">GOW ORDER NOW</h3>
+            <div class="badge">FREE MONTH</div>
+        </div>
+    </header>
+
+    <!-- Main Content / Booking Form -->
+    <main class="container">
+        
+        <!-- Step 1: Pilih Gunung -->
+        <section class="card" id="step-1">
+            <h2><span class="step-number">1</span> Pilih Destinasi</h2>
+            <div class="grid-options" id="gunung-container">
+                <!-- Diisi via JS -->
+            </div>
+        </section>
+
+        <!-- Step 2: Pilih Paket (Sembunyi dulu) -->
+        <section class="card hidden" id="step-2">
+            <h2><span class="step-number">2</span> Pilih Paket & Harga</h2>
+            <div class="paket-container">
+                <label class="radio-card">
+                    <input type="radio" name="paket" value="Include All" data-harga="0" id="paket-all">
+                    <div class="card-content">
+                        <h3>Include All</h3>
+                        <p class="harga-text" id="label-harga-all">Rp 0</p>
+                        <ul class="fasilitas">
+                            <li>Simaksi, Parkir, Logistik</li>
+                            <li>Porter, Guide, P3k Standar</li>
+                            <li>Transportasi PP</li>
+                        </ul>
+                    </div>
+                </label>
+
+                <label class="radio-card">
+                    <input type="radio" name="paket" value="Include BC" data-harga="0" id="paket-bc">
+                    <div class="card-content">
+                        <h3>Include BC</h3>
+                        <p class="harga-text" id="label-harga-bc">Rp 0</p>
+                        <ul class="fasilitas">
+                            <li>Simaksi, Logistik</li>
+                            <li>Porter, Guide, P3k Standar</li>
+                            <li class="text-muted"><i>(Tanpa Transportasi & Parkir)</i></li>
+                        </ul>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+        <!-- Step 3: Detail & Add-ons (Sembunyi dulu) -->
+        <section class="card hidden" id="step-3">
+            <h2><span class="step-number">3</span> Detail Pesanan</h2>
+            
+            <div class="form-group">
+                <label for="mepo">Pilih Meeting Point (Mepo):</label>
+                <select id="mepo" required>
+                    <option value="" disabled selected>-- Pilih Mepo --</option>
+                    <option value="Stasiun Bogor">Stasiun Bogor</option>
+                    <option value="Stasiun Jakarta">Stasiun Jakarta</option>
+                    <option value="Terminal Baranangsiang">Terminal Baranangsiang</option>
+                    <option value="Basecamp Puteescape">Basecamp Puteescape</option>
+                </select>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" id="add-ojek" value="200000">
+                    Tambah Jasa Ojek PP (+ Rp 200.000)
+                </label>
+            </div>
+        </section>
+
+        <!-- Summary / Checkout -->
+        <section class="card checkout-card" id="checkout-section">
+            <h2>Ringkasan Pesanan</h2>
+            <div class="summary-details">
+                <p><span>Destinasi:</span> <strong id="sum-gunung">-</strong></p>
+                <p><span>Paket:</span> <strong id="sum-paket">-</strong></p>
+                <p><span>Mepo:</span> <strong id="sum-mepo">-</strong></p>
+                <p><span>Ojek:</span> <strong id="sum-ojek">Tidak</strong></p>
+            </div>
+            <hr>
+            <div class="total-price">
+                <span>Total:</span>
+                <h3 id="sum-total">Rp 0</h3>
+            </div>
+
+            <div class="action-buttons">
+                <button id="btn-wa" class="btn btn-wa" disabled>
+                    <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+                </button>
+                <a href="https://instagram.com/puteescape2511" target="_blank" class="btn btn-ig">
+                    <i class="fa-brands fa-instagram"></i> Cek Instagram
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>WhatsApp: 08551970165 | IG: @puteescape2511</p>
+        <p>&copy; 2023 Trip By Puteescape. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
