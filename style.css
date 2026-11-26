@@ -373,3 +373,37 @@ footer {
     color: var(--text-muted);
     border-top: 1px solid var(--glass-border);
 }
+
+/* UPDATE STYLE UNTUK LOGO BARU */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.main-logo {
+    max-width: 320px; /* Ukuran maksimal logo di layar laptop */
+    width: 100%;
+    height: auto;
+    border-radius: 20px; /* Bikin sudut hitamnya jadi membulat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Efek bayangan melayang */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Border tipis transparan biar elegan */
+    transition: all 0.3s ease; /* Animasi pas di-hover */
+}
+
+/* Efek pas kursor diarahkan ke logo (di laptop) */
+.main-logo:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 35px rgba(244, 114, 182, 0.3); /* Bayangan jadi warna pink */
+    border-color: var(--pink-primary);
+}
+
+/* Penyesuaian ukuran logo di HP (Mobile friendly) */
+@media (max-width: 600px) {
+    .main-logo {
+        max-width: 240px; /* Dikecilin sedikit biar ga makan tempat di HP */
+        border-radius: 15px;
+    }
+}
