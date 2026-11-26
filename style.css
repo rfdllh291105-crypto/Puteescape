@@ -431,3 +431,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 input[type="date"]:invalid {
     color: var(--text-muted);
 }
+
+/* STYLING UNTUK INPUT TEKS (NAMA) */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
+/* Efek pas kolom nama diklik */
+input[type="text"]:focus {
+    border-color: var(--pink-primary);
+    background: rgba(244, 114, 182, 0.1);
+    box-shadow: 0 0 10px rgba(244, 114, 182, 0.2);
+}
